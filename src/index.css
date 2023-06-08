@@ -2,7 +2,52 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
-    font-family: 'Jost', sans-serif;
-    /* font-family: 'Raleway', sans-serif; */
+.light-theme{
+    --nevMenu: #484848;
+    --nevMenu_Hover: #63ac45;
+    --headings: #1C231F;
+    --icons-url: #F7921E;
+    --icon-theme: #141414;
+    --white: #FFF;
+    --bg-white: #FFF;
+    --res-menu: #eacda3
 }
+.dark-theme{
+    --nevMenu: #FFF;
+    --icon-theme: #FFF;
+    --white: #FFF;
+    --bg-white: #000
+}
+
+body{
+    background-color: var(--bg-white);
+    font-family: 'Jost', sans-serif;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+ul li{
+    font-family: 'Jost', sans-serif;   
+}
+h1,h3,h5{
+    font-family: 'Jost', sans-serif; 
+}
+h2{
+    font-family: 'Luckiest Guy', cursive;   
+}
+h4,h6{
+    font-family: 'Raleway', sans-serif;  
+}
+p,span{
+    font-family: 'Raleway', sans-serif;  
+}
+a{
+    text-decoration: none;
+}
+
+
+
+/* @media (min-width: 320px) and (max-width: 576px){
+    
+} */
