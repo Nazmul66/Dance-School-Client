@@ -26,11 +26,13 @@ const Header = () => {
     }, [theme])
 
     return (
-        <header className="py-2 px-5">
+        <header className="py-5 px-5">
           <div className='max-w-[1140px] mx-auto'>
               <div className='flex justify-between items-center'>
                 <div className='flex items-center'>
-                    <img src={logo} alt="" className='lg:w-[120px] w-[70px]' />
+                   <Link to="/">
+                      <img src={logo} alt="" className='lg:w-[80px] w-[70px] rounded-full' />
+                   </Link>
                 </div>
                     <nav className={`${toggle ? "menuBar active" : "menuBar "}`}>
                         <ul>
@@ -44,7 +46,7 @@ const Header = () => {
                     <div className='flex items-center'>
                         <div className='lg:hidden block mr-2' >
                             {
-                                toggle ? <RxCross1 className='icons' onClick={() => setToggle(!toggle)} /> :
+                               toggle ? <RxCross1 className='icons' onClick={() => setToggle(!toggle)} /> :
                                 <FiMenu className='icons' onClick={() => setToggle(!toggle)} />
                             }
                         </div>

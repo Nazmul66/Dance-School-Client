@@ -10,13 +10,16 @@
     --icon-theme: #141414;
     --white: #FFF;
     --bg-white: #FFF;
-    --res-menu: #eacda3
+    --res-menu: #eacda3;
+    --footer-bg: #0a0a0a;
+    --footer-color: #fed620;
 }
 .dark-theme{
     --nevMenu: #FFF;
     --icon-theme: #FFF;
     --white: #FFF;
-    --bg-white: #000
+    --bg-white: #000;
+    --footer-color: red;
 }
 
 body{
@@ -30,7 +33,7 @@ body{
 ul li{
     font-family: 'Jost', sans-serif;   
 }
-h1,h3,h5{
+h1,h3,h5,p{
     font-family: 'Jost', sans-serif; 
 }
 h2{
@@ -39,7 +42,7 @@ h2{
 h4,h6{
     font-family: 'Raleway', sans-serif;  
 }
-p,span{
+span{
     font-family: 'Raleway', sans-serif;  
 }
 a{
