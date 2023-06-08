@@ -6,8 +6,10 @@ import { useForm } from "react-hook-form";
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../../AuthProvider/AuthProvider';
 import { updateProfile } from 'firebase/auth';
+import DynamicTitle from '../../../DynamicTitle/DynamicTitle';
 
 const RegisterPage = () => {
+    DynamicTitle("Register")
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const [error, setError] = useState('');
     const navigate = useNavigate();
@@ -37,7 +39,7 @@ const RegisterPage = () => {
         })
         reset();
     };
-
+    
 
     return (
         <div className="bg-white pb-20 px-5">
@@ -64,9 +66,10 @@ const RegisterPage = () => {
                          <div className='mb-7'>
                              <label htmlFor="" className='text-[20px] mb-3 block font-semibold text-[#141414]'>password</label>
                              <input type="password" name="password" {...register("password", { 
-                                required: true,
+                                 required: true,
                                  minLength: 6, 
-                                 pattern: /(?=.*[A-Z])(?=.*[~`!@#$%^&*()--+={}|\\:;"'<>,.?/_₹])/ })} className='block w-full outline-none h-[50px] border-[2px] rounded-md px-4' placeholder='Enter your password' />
+                                 pattern: /(?=.*[A-Z])(?=.*[~`!@#$%^&*()--+={}|\\:;"'<>,.?/_₹])/ })}
+                                 className='block w-full outline-none h-[50px] border-[2px] rounded-md px-4' placeholder='Enter your password' />
                                {errors.password?.type === 'required' && <p className='text-red-600 font-bold block mt-2'>Please fill up this password field</p>}
                                {errors.password?.type === 'minLength' && <p className='text-red-600 font-bold block mt-2'>Please at least use 6 character word.</p>}
                                {errors.password?.type === 'pattern' && <p className='text-red-600 font-bold block mt-2'>Please use at least 1 UpperCase & use 1 special character</p>}
@@ -74,7 +77,10 @@ const RegisterPage = () => {
 
                          <div className='mb-7'>
                              <label htmlFor="" className='text-[20px] mb-3 block font-semibold text-[#141414]'>Confirm password</label>
-                             <input type="password" name="con_pass" {...register("con_pass", { required: true} )} className='block w-full outline-none h-[50px] border-[2px] rounded-md px-4' placeholder='Enter your password' />
+                             <input type="password" name="confirm_pass" {...register("confirm_pass", 
+                             { required: true, })}
+   
+                             className='block w-full outline-none h-[50px] border-[2px] rounded-md px-4' placeholder='Enter your password' />
                              {errors.con_pass?.type === 'required' && <span className='text-red-600 font-bold block mt-2'>Please fill up this confirm password field</span>}
                          </div>
 
@@ -91,7 +97,7 @@ const RegisterPage = () => {
                             error && <span className='text-red-600 font-bold block mt-2'>{error}</span>
                          }
 
-                         <p className='text-[#141414] text-[18px] font-bold'>Already have an account? <Link to="/login" className='text-[#fed620] cursor-pointer'>Please LogIn !</Link></p>
+                         <p className='text-[#141414] text-[18px] font-bold'>Already have an account? <Link to="/login" className='text-[#f85d44] cursor-pointer'>Please LogIn !</Link></p>
                      </form>
                   </div>
                </div>

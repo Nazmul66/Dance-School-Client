@@ -7,9 +7,13 @@ import { BsGoogle } from 'react-icons/bs';
 import { useForm } from "react-hook-form";
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../../AuthProvider/AuthProvider';
+import DynamicTitle from '../../../DynamicTitle/DynamicTitle';
+import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 
 const LoginPage = () => {
+    DynamicTitle("Login")
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const [toggle, setToggle] = useState(false);
     const [error, setError] = useState('');
     const navigate = useNavigate();
     const { googleSignIn, signInLogin } = useContext(AuthContext)
@@ -33,13 +37,13 @@ const LoginPage = () => {
         .then(result =>{
             const users = result.user;
             console.log(users)
+            navigate('/')
         })
         .catch(error =>{
             setError(error.message)
         })
     }
-  
-    // console.log(watch("example"));
+
 
     return (
         <div className="bg-white pb-20 px-5">
@@ -63,7 +67,13 @@ const LoginPage = () => {
 
                              <div className='mb-7'>
                                  <label htmlFor="" className='text-[20px] mb-3 block font-semibold text-[#141414]'>password</label>
-                                 <input type="password" name="password" {...register("password", { required: true} )} className='block w-full outline-none h-[50px] border-[2px] rounded-md px-4' placeholder='Enter your password' />
+                                 <div className='relative'>
+                                    <input type={`${toggle ? "password" : "text"}`} name="password" {...register("password", { required: true} )} className='block w-full outline-none h-[50px] border-[2px] rounded-md px-4' placeholder='Enter your password' />
+                                    {
+                                        toggle ? <AiFillEyeInvisible onClick={() => setToggle(!toggle)} className='absolute text-[24px] top-[50%] right-[10px] translate-y-[-50%] cursor-pointer' />
+                                        : <AiFillEye onClick={() => setToggle(!toggle)} className='absolute text-[24px] top-[50%] right-[10px] translate-y-[-50%] cursor-pointer' />
+                                    }
+                                 </div>
                                  {errors.password?.type === 'required' && <span className='text-red-600 font-bold block mt-2'>Please fill up this password field</span>}
                              </div>
 
@@ -74,7 +84,7 @@ const LoginPage = () => {
                                 error && <span className='text-red-600 font-bold block mt-2'>{error}</span>
                              }
 
-                             <p className='text-[#141414] text-[18px] font-bold'>If you have no account? <Link to="/register" className='text-[#fed620] cursor-pointer'>Please Register Now !</Link></p>
+                             <p className='text-[#141414] text-[18px] font-bold'>If you have no account? <Link to="/register" className='text-[#f85d44] cursor-pointer'>Please Register Now !</Link></p>
                              <div className="divider my-10">OR</div>
 
                              <div className='social-icons text-center'>
