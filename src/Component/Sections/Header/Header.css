@@ -13,11 +13,10 @@ header{
     align-items: center;
 }
 .menuBar ul{
-    padding: 0;
+    display: flex;
+    align-items: center;
 }
 .menuBar ul li{
-    display: inline-block;
-    list-style: none;
     font-weight: bold;
     margin: 0 24px;
 }
@@ -51,10 +50,15 @@ header{
     .menuBar.active{
         left: 0%;
     }
+    .menuBar ul{
+        display: flex;
+        flex-direction: column;
+        align-items: normal;
+    }
     .menuBar ul li{
         display: block;
         font-weight: bold;
-        margin: 24px 0px;
+        margin: 16px 0px;
     }
     .icons{
         position: relative;

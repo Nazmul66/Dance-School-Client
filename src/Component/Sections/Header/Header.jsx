@@ -5,12 +5,24 @@ import { CiSun } from 'react-icons/ci';
 import { FiMenu } from 'react-icons/fi';
 import { RxCross1} from 'react-icons/rx';
 import { BsFillMoonFill} from 'react-icons/bs';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../../../AuthProvider/AuthProvider';
 
 
 const Header = () => {
+    const {user, signOutUser} = useContext(AuthContext);
     const [toggle, setToggle] = useState(false)
     const [theme, setTheme] = useState('light-theme')
+
+    const handleLogOut = () =>{
+        signOutUser()
+        .then(() =>{
+            console.log("successful LogOut")
+        })
+        .catch(error =>{
+            console.log(error.message)
+        })
+    }
 
     const setThemeItem = () =>{
         if(theme === 'light-theme'){
@@ -39,8 +51,19 @@ const Header = () => {
                             <li><Link>Home</Link></li>
                             <li><Link>Instructors</Link></li>
                             <li><Link>Classes</Link></li>
-                            <li><Link>Dashboard </Link></li>
-                            <li><Link>Login </Link></li>
+                            {
+                                user ? 
+                                <>
+                                    <li><Link>Dashboard </Link></li>
+                                    <li>
+                                        <img src={user?.photoURL} alt="" className='w-[50px] h-[50px] block rounded-[50px]' />
+                                    </li>
+                                    <li><button onClick={ handleLogOut }>LogOut</button></li>
+                                </> :
+                                <>
+                                    <li><Link to="/login">Login </Link></li>
+                                </>
+                            }
                         </ul>
                     </nav>
                     <div className='flex items-center'>
