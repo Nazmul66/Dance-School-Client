@@ -6,6 +6,7 @@ import Home from "../Component/Pages/Home";
 import ErrorElement from "../ErrorElement/ErrorElement";
 import Dashboard from "../Dashboard/Dashboard";
 import ClassPages from "../Component/Pages/ClassPages";
+import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
 
 const router = createBrowserRouter([
     {
@@ -33,7 +34,7 @@ const router = createBrowserRouter([
     },
     {
         path: "/dashboard",
-        element: <Dashboard></Dashboard>,
+        element: <PrivateRoutes><Dashboard></Dashboard></PrivateRoutes>,
         children: [
             {
                 path: "/dashboard/"

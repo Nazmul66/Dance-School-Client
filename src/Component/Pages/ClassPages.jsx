@@ -42,7 +42,7 @@ const ClassPages = () => {
                         title: 'Your course has been added',
                         showConfirmButton: false,
                         timer: 1500
-                      })
+                    })
                 }
             })
         }

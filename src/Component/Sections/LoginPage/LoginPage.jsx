@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './LoginPage.css'
 import image from '../../../../public/images/password.png';
 import user from '../../../../public/images/user.png'
@@ -14,9 +14,13 @@ const LoginPage = () => {
     DynamicTitle("Login")
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const [toggle, setToggle] = useState(false);
-    const [error, setError] = useState('');
+    const location = useLocation();
     const navigate = useNavigate();
+    const [error, setError] = useState('');
     const { googleSignIn, signInLogin } = useContext(AuthContext)
+    // console.log(location)
+
+    const from = location.state?.from?.pathname || "/"; 
 
     const onSubmit = data => {   
         console.log(data)
@@ -24,7 +28,7 @@ const LoginPage = () => {
         .then(result =>{
             const users = result.user;
             console.log(users)
-            navigate('/')
+            navigate(from, { replace: true })
         })
         .catch(error =>{
             setError(error.message)
@@ -37,7 +41,7 @@ const LoginPage = () => {
         .then(result =>{
             const users = result.user;
             console.log(users)
-            navigate('/')
+            navigate(from, { replace: true })
         })
         .catch(error =>{
             setError(error.message)
