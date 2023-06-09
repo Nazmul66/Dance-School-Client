@@ -33,16 +33,13 @@ body{
 ul li{
     font-family: 'Jost', sans-serif;   
 }
-h1,h3,h5,p{
+h1,h3,h5,p,span{
     font-family: 'Jost', sans-serif; 
 }
 h2{
     font-family: 'Luckiest Guy', cursive;   
 }
 h4,h6{
-    font-family: 'Raleway', sans-serif;  
-}
-span{
     font-family: 'Raleway', sans-serif;  
 }
 a{

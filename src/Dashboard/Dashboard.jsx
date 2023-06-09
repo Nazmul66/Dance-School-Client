@@ -7,6 +7,7 @@ import { FaUserTie, FaUserCheck } from 'react-icons/fa';
 import { BsFillHouseDoorFill, BsFillCalendarWeekFill } from 'react-icons/bs';
 import { MdSchool } from 'react-icons/md';
 import { AiOutlineCodeSandbox, AiOutlineMenu } from 'react-icons/ai';
+import { RxCross1 } from 'react-icons/rx';
 
 const Dashboard = () => {
     // const location = useLocation(); 
@@ -24,7 +25,10 @@ const Dashboard = () => {
                     <img src={logo} alt="" className='w-[70px] rounded-full' />
                 </div>
                 <div className=""> 
-                    <AiOutlineMenu onClick={() => setToggle(!toggle) } className='text-white z-30 text-[24px]' />
+                {
+                    toggle ? <RxCross1 onClick={() => setToggle(!toggle) } className='text-white z-30 text-[24px]' /> : <AiOutlineMenu onClick={() => setToggle(!toggle) } className='text-white z-30 text-[24px]' />
+                }
+                    
                 </div>
             </div>
         </div>
@@ -37,7 +41,6 @@ const Dashboard = () => {
                    </div>
                    <div className='dashboard_menu'>
                        <ul>
-
                         {
                             isAdmin ? <>
                                 <li onClick={() => setActive("adminHome")}><Link to="" className={`flex items-center ${active === "adminHome" ? "active" : ""}`}><FaUserCheck /> <h3 className='ml-3'>My Selected Classes</h3></Link></li>
@@ -52,7 +55,6 @@ const Dashboard = () => {
                                 <li onClick={() => setActive("reservation")}><Link className={`flex items-center ${active === "reservation" ? "active" : ""}`}><BsFillCalendarWeekFill /> <h3 className='ml-3'>Manage Users</h3></Link></li>
                             </>
                         }
-
                        </ul>
 
                          <div className="w-full bg-[#FFF] h-[1px] my-5"></div>
@@ -62,7 +64,7 @@ const Dashboard = () => {
 
                            <li><Link className='flex items-center'><FaUserTie /> <h3 className='ml-3'>Instructors</h3></Link></li>
 
-                           <li><Link className='flex items-center'><MdSchool /> <h3 className='ml-3'>Classes</h3></Link></li>
+                           <li><Link to="/classPage" className='flex items-center'><MdSchool /> <h3 className='ml-3'>Classes</h3></Link></li>
                     
                        </ul>
                    </div>

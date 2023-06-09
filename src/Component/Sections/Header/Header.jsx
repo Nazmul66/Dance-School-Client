@@ -48,9 +48,9 @@ const Header = () => {
                 </div>
                     <nav className={`${toggle ? "menuBar active" : "menuBar "}`}>
                         <ul>
-                            <li><Link>Home</Link></li>
+                            <li><Link to="/">Home</Link></li>
                             <li><Link>Instructors</Link></li>
-                            <li><Link>Classes</Link></li>
+                            <li><Link to='/classPage'>Classes</Link></li>
                             {
                                 user ? 
                                 <>

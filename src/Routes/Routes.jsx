@@ -5,6 +5,7 @@ import RegisterPage from "../Component/Sections/RegisterPage/RegisterPage";
 import Home from "../Component/Pages/Home";
 import ErrorElement from "../ErrorElement/ErrorElement";
 import Dashboard from "../Dashboard/Dashboard";
+import ClassPages from "../Component/Pages/ClassPages";
 
 const router = createBrowserRouter([
     {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
             {
                 path: "/",
                 element: <Home></Home>
+            },
+            {
+                path: "/classPage",
+                element: <ClassPages></ClassPages>
             },
             {
                 path: '/login',
