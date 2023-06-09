@@ -6,8 +6,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 // import required modules
-import { Navigation } from "swiper";
-// import { BsFillQuestionOctagonFill } from 'react-icons/bs';
+import { Autoplay, Navigation } from "swiper";
 import { FcAnswers } from 'react-icons/fc';
 
 const Testimonial_Section = () => {
@@ -28,7 +27,28 @@ const Testimonial_Section = () => {
                 <h4 className="text-center text-[#77ce53] text-[28px] font-extrabold">Testimonial Section</h4>
                <div className="w-[120px] h-[3px] bg-[#fed620] mx-auto mt-6 mb-20"></div>
 
-        <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
+        <Swiper 
+               autoplay={{
+                    delay: 4000,
+                    disableOnInteraction: false,
+                  }}
+                  navigation={true}
+                  breakpoints={{
+                      320: {
+                        slidesPerView: 1,
+                        spaceBetween: 20,
+                      },
+                      577: {
+                        slidesPerView: 1,
+                        spaceBetween: 20,
+                      },
+                      1024: {
+                        slidesPerView: 1,
+                        spaceBetween: 20,
+                      },
+                    }}
+            modules={[Autoplay, Navigation]} 
+            className="mySwiper">
             {
                 review.map((reviews, index) => <SwiperSlide
                     key={index}>

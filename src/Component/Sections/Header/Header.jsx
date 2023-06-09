@@ -54,7 +54,7 @@ const Header = () => {
                             {
                                 user ? 
                                 <>
-                                    <li><Link>Dashboard </Link></li>
+                                    <li><Link to='/dashboard'>Dashboard </Link></li>
                                     <li>
                                         <img src={user?.photoURL} alt="" className='w-[50px] h-[50px] block rounded-[50px]' />
                                     </li>
