@@ -7,7 +7,7 @@ const Popular_instructor = () => {
         fetch("Instructor.json")
         .then(res => res.json())
         .then(data => {
-            console.log(data)
+            // console.log(data)
             setInstructor(data)
         })
     },[])
@@ -21,11 +21,11 @@ const Popular_instructor = () => {
                   <div className="grid lg:grid-cols-3 grid-cols-1 gap-7">
                      {
                         instructor.map(teacher => 
-                          <div key={teacher.name} className="border-[1px] p-5 rounded-md">
+                          <div key={teacher.name} className="border-[1px] p-5 rounded-md bg-[#FFF]">
                               <div className="mb-5">
                                   <img src={teacher.image} alt="" className="w-full h-[340px] object-cover rounded-md" />
                               </div>
-                              <h3 className="text-[#141414] font-semibold text-[18px] mb-5">Instructor Name: {teacher.name}</h3>
+                              <h3 className="text-[#141414] font-semibold text-[18px] mb-4">Instructor Name: {teacher.name}</h3>
                               <h5 className="text-[#141414] font-semibold text-[16px]">Dancer: {teacher.Dance_name}</h5>
                           </div>)
                      }
