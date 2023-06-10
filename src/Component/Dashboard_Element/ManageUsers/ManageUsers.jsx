@@ -1,23 +1,16 @@
-import { useEffect, useState } from "react";
-import { FaUserShield } from "react-icons/fa";
+import { useQuery } from "@tanstack/react-query";
+import { FaUserAlt, FaUserShield } from "react-icons/fa";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import Swal from "sweetalert2";
 
 const ManageUsers = () => {
-    const [users, setUsers] = useState([]);
+    // const [users, setUsers] = useState([]);
 
-    // const { data: users = [], refetch } = useQuery(['user'], async () =>{
-    //       const res = await fetch("http://localhost:5000/user")
-    //       return res.json();
-    // })
-
-    useEffect(() =>{
-        fetch("http://localhost:5000/user")
-        .then(res => res.json())
-        .then(user => {
-            setUsers(user);
-        })
-    },[])
+    const { data: users = [], refetch } = useQuery(['user'],
+       async () =>{
+          const res = await fetch("http://localhost:5000/user")
+          return res.json();
+    })
 
     const changeAdmin = (items) =>{
         fetch(`http://localhost:5000/users/admin/${items._id}`, {
@@ -27,7 +20,7 @@ const ManageUsers = () => {
         .then(data => {
             console.log(data)
             if(data.modifiedCount){
-                // refetch();
+                refetch();
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
@@ -39,10 +32,32 @@ const ManageUsers = () => {
         })
     }
 
+
+    const changeInstructor = (items) =>{
+        fetch(`http://localhost:5000/users/instructor/${items._id}`, {
+            method: "PATCH",
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            if(data.modifiedCount){
+                refetch();
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: `${items?.name} is an admin`,
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            }
+        })
+    }
+
+
     const handleDelete = (items) =>{
         //   console.log("hello", id)
           Swal.fire({
-            title: 'Are you sure? Do you want to delete',
+            title: 'Do you want to delete',
             text: "You won't be able to revert this!",
             icon: 'warning',
             showCancelButton: true,
@@ -58,7 +73,7 @@ const ManageUsers = () => {
                 .then(data => {
                     // console.log(data)
                     if(data.deletedCount > 0){
-                        // refetch();
+                        refetch();
                         Swal.fire(
                             'Deleted!',
                             'Your item has been deleted.',
@@ -86,11 +101,12 @@ const ManageUsers = () => {
                              <th className='p-4 whitespace-nowrap text-[14px]'>No.</th>
                              <th className='p-4 whitespace-nowrap text-[14px]'>User Name</th>
                              <th className='p-4 whitespace-nowrap text-[14px]'>User Email</th>
-                             <th className='p-4 whitespace-nowrap text-[14px]'>Role</th>
+                             <th className='p-4 whitespace-nowrap text-[14px]'>Admin Role</th>
+                             <th className='p-4 whitespace-nowrap text-[14px]'>Instructor Role</th>
                              <th className='p-4 whitespace-nowrap text-[14px]'>ACTION</th>
                          </tr>
                      </thead>
-                     <tbody>
+                     <tbody className="bg-[#f7f7f7] border-[1px]">
                      {/* row 1 */}
                      {
                          users.map((items, index) =><tr key={index} className='border-b-[1px] border-[#e8e8e8] text-center'>
@@ -101,7 +117,12 @@ const ManageUsers = () => {
                              <td className='text-[#141414] p-4 whitespace-nowrap font-semibold'>{items?.email}</td>
                              <td className='p-4 whitespace-nowrap'>
                                 {
-                                    items.role === "admin" ? "admin" : <button onClick={() => changeAdmin(items)} className=' bg-[#D1A054] text-[#FFF] px-4 py-3 rounded-[5px]'><FaUserShield /></button>
+                                    items.role === "admin" ? <span className="bg-[orange] px-3 py-2 rounded-3xl text-[#FFF]">admin</span> : <button onClick={() => changeAdmin(items)} className=' bg-[#D1A054] text-[#FFF] px-4 py-3 rounded-[5px]'><FaUserShield /></button>
+                                }
+                             </td>
+                             <td className='p-4 whitespace-nowrap'>
+                                {
+                                    items.role2 === "instructor" ? <span className="bg-[green] px-3 py-2 rounded-3xl text-[#FFF]">instructor</span> : <button onClick={() => changeInstructor(items)} className=' bg-[#D1A054] text-[#FFF] px-4 py-3 rounded-[5px]'><FaUserAlt /></button>
                                 }
                              </td>
                              <td className='p-4 whitespace-nowrap'><button onClick={() => handleDelete(items) } className="bg-[#B91C1C] text-[#FFF] px-4 py-3 rounded-[5px]"><RiDeleteBin6Line /></button></td>

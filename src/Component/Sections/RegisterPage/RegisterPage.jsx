@@ -7,17 +7,18 @@ import { useContext, useState } from 'react';
 import { AuthContext } from '../../../AuthProvider/AuthProvider';
 import { updateProfile } from 'firebase/auth';
 import DynamicTitle from '../../../DynamicTitle/DynamicTitle';
+import Swal from 'sweetalert2';
 
 const RegisterPage = () => {
     DynamicTitle("Register")
-    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm();
     const [error, setError] = useState('');
     const navigate = useNavigate();
-    const { createUSers } = useContext(AuthContext)
+    const { createUsers } = useContext(AuthContext)
 
     const onSubmit = (data) => {   
         // console.log(data)
-        createUSers(data.email, data.password)
+        createUsers(data.email, data.password)
         .then(result =>{
             const users = result.user;
             console.log(users)
@@ -40,19 +41,24 @@ const RegisterPage = () => {
                 .then(data => {
                     console.log(data)
                     if(data.insertedId){
-                       alert("successfully login")
+                       navigate('/login')                        
+                            Swal.fire({
+                                position: 'center-center',
+                                icon: 'success',
+                                title: 'Your work has been saved',
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
                     }
                 })
             })
             .catch(error =>{
                 console.log(error.message)
             })
-            navigate('/login')
         })
         .catch(error =>{
             setError(error.message)
         })
-        reset();
     };
     
 
@@ -106,7 +112,7 @@ const RegisterPage = () => {
                          </div>
 
                          <div className='text-center'>
-                            <button className='text-[#FFF] bg-[#141414] px-10 py-2 mb-6'>Login</button>
+                            <button className='text-[#FFF] bg-[#141414] px-10 py-2 mb-6'>Register</button>
                          </div>
                          {
                             error && <span className='text-red-600 font-bold block mt-2'>{error}</span>
