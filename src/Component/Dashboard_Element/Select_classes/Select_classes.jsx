@@ -2,6 +2,7 @@ import './Select_classes.css'
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import useBooked from '../../../CustomLoader/useBooked';
 import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 
 const Select_classes = () => {
     const [ book, refetch ] = useBooked();
@@ -39,8 +40,8 @@ const Select_classes = () => {
 
     }
 
-    const total = book.reduce(( sum, item ) => item.price + sum, 0)
 
+    const total = book.reduce(( sum, item ) => item.price + sum, 0)
 
     return (
         <div className='py-10 px-5 '>
@@ -59,7 +60,7 @@ const Select_classes = () => {
                          <tr className='text-center bg-[royalblue] text-[#FFF] font-semibold'>
                              <th className='p-4 whitespace-nowrap text-[14px]'>No.</th>
                              <th className='p-4 whitespace-nowrap text-[14px]'>IMAGE</th>
-                             <th className='p-4 whitespace-nowrap text-[14px]'>Dance Name</th>
+                             <th className='p-4 whitespace-nowrap text-[14px]'>Class</th>
                              <th className='p-4 whitespace-nowrap text-[14px]'>PRICE</th>
                              <th className='p-4 whitespace-nowrap text-[14px]'>ACTION</th>
                              <th className='p-4 whitespace-nowrap text-[14px]'>PAY</th>
@@ -77,7 +78,7 @@ const Select_classes = () => {
                              <td className='text-[#737373] p-4 whitespace-nowrap'>${items?.price}</td>
                              <td className='p-4 whitespace-nowrap'><button onClick={()=> handleDelete(items._id) } className="bg-[#B91C1C] text-[#FFF] px-4 py-3 rounded-[5px]"><RiDeleteBin6Line /></button></td>
                              <td className='text-[#737373] p-4 whitespace-nowrap'>
-                                 <button className='bg-[royalblue] rounded-lg px-2 py-2 text-[#FFF]'>PAY</button>
+                                <Link to={`/dashboard/payment/${items._id}`} className='bg-[royalblue] rounded-lg px-2 py-2 text-[#FFF]'>PAY</Link>
                              </td>
                          </tr>)
                      }

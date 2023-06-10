@@ -40,8 +40,25 @@ const LoginPage = () => {
         googleSignIn()
         .then(result =>{
             const users = result.user;
-            console.log(users)
-            navigate(from, { replace: true })
+            // console.log(users)
+            const saveData = { name: users.displayName, email: users.email }
+            fetch("http://localhost:5000/user",{
+                    method: "POST",
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(saveData)
+                })
+                .then(res => res.json())
+                .then(data => {
+                    // console.log(data)
+                    if(data.insertedId){
+                       navigate(from, { replace: true })
+                    }
+                    else{
+                        navigate(from, { replace: true })
+                    }
+                })
         })
         .catch(error =>{
             setError(error.message)

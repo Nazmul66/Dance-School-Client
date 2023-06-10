@@ -8,6 +8,7 @@ import Dashboard from "../Dashboard/Dashboard";
 import ClassPages from "../Component/Pages/ClassPages";
 import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
 import Select_classes from "../Component/Dashboard_Element/Select_classes/Select_classes";
+// import Payment from "../Component/Dashboard_Element/Payment/Payment";
 
 const router = createBrowserRouter([
     {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
             {
                 path: "/dashboard/select_class",
                 element: <Select_classes></Select_classes>
+            },
+            {
+                path: "/dashboard/payment/:id",
+                // element: <Payment></Payment>,
             }
         ]
     }

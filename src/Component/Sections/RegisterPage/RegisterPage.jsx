@@ -27,7 +27,22 @@ const RegisterPage = () => {
                 photoURL: data.photoURL
             })
             .then(() =>{
-                console.log("updated")
+                // console.log("updated")
+                const SaveData = { name: data.name ,email: data.email }
+                fetch("http://localhost:5000/user",{
+                    method: "POST",
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(SaveData)
+                })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    if(data.insertedId){
+                       alert("successfully login")
+                    }
+                })
             })
             .catch(error =>{
                 console.log(error.message)
