@@ -15,7 +15,7 @@ const Dashboard = () => {
     const [toggle, setToggle] = useState(false);
     const [active, setActive] = useState("selectClass");
 
-    const isAdmin = true;
+    const isAdmin = false;
 
     return (
         <>
@@ -50,9 +50,9 @@ const Dashboard = () => {
                                 <li onClick={() => setActive("manage")}><Link to="" className={`flex items-center ${active === "manage" ? "active" : ""}`}><GiWallet /> <h3 className='ml-3'>Payment History</h3></Link></li>
                             </> : 
                             <>
-                                <li onClick={() => setActive("userHome")}><Link to="" className={`flex items-center ${active === "userHome" ? "active" : ""}`}><BsFillHouseDoorFill /> <h3 className='ml-3'>Manage Classes</h3></Link></li>
+                                <li onClick={() => setActive("ManageClasses")}><Link to="" className={`flex items-center ${active === "ManageClasses" ? "active" : ""}`}><BsFillHouseDoorFill /> <h3 className='ml-3'>Manage Classes</h3></Link></li>
 
-                                <li onClick={() => setActive("reservation")}><Link className={`flex items-center ${active === "reservation" ? "active" : ""}`}><BsFillCalendarWeekFill /> <h3 className='ml-3'>Manage Users</h3></Link></li>
+                                <li onClick={() => setActive("ManageUsers")}><Link to="/dashboard/Manage_users" className={`flex items-center ${active === "ManageUsers" ? "active" : ""}`}><BsFillCalendarWeekFill /> <h3 className='ml-3'>Manage Users</h3></Link></li>
                             </>
                         }
                        </ul>
