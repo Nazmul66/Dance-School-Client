@@ -7,12 +7,14 @@ import { RxCross1} from 'react-icons/rx';
 import { BsFillMoonFill} from 'react-icons/bs';
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../AuthProvider/AuthProvider';
-
+import useBooked from '../../../CustomLoader/useBooked';
 
 const Header = () => {
     const {user, signOutUser} = useContext(AuthContext);
     const [toggle, setToggle] = useState(false)
-    const [theme, setTheme] = useState('light-theme')
+    const [theme, setTheme] = useState('light-theme');
+    const [book] = useBooked();
+
 
     const handleLogOut = () =>{
         signOutUser()
@@ -56,7 +58,10 @@ const Header = () => {
                                 <>
                                     <li><Link to='/dashboard'>Dashboard </Link></li>
                                     <li>
-                                        <img src={user?.photoURL} alt="" className='w-[50px] h-[50px] block rounded-[50px]' />
+                                        <div className='relative'>
+                                           <img src={user?.photoURL} alt="" className='w-[60px] h-[60px] block rounded-[50px]' />
+                                           <h3 className='absolute top-[-14px] right-[-16px] text-white bg-warning w-[40px] h-[40px] flex justify-center items-center rounded-full'>{book?.length || 0}</h3>
+                                        </div>
                                     </li>
                                     <li><button onClick={ handleLogOut }>LogOut</button></li>
                                 </> :

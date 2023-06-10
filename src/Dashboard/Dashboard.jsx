@@ -13,13 +13,13 @@ const Dashboard = () => {
     // const location = useLocation(); 
     // console.log(location)
     const [toggle, setToggle] = useState(false);
-    const [active, setActive] = useState("adminHome");
+    const [active, setActive] = useState("selectClass");
 
     const isAdmin = true;
 
     return (
         <>
-        <div className='p-5 lg:hidden block bg-[#000000a6]'>
+        <div className='p-5 lg:hidden block'>
             <div className='flex justify-between items-center'>
                 <div className="">
                     <img src={logo} alt="" className='w-[70px] rounded-full' />
@@ -43,7 +43,7 @@ const Dashboard = () => {
                        <ul>
                         {
                             isAdmin ? <>
-                                <li onClick={() => setActive("adminHome")}><Link to="" className={`flex items-center ${active === "adminHome" ? "active" : ""}`}><FaUserCheck /> <h3 className='ml-3'>My Selected Classes</h3></Link></li>
+                                <li onClick={() => setActive("selectClass")}><Link to="/dashboard/select_class" className={`flex items-center ${active === "selectClass" ? "active" : ""}`}><FaUserCheck /> <h3 className='ml-3'>My Selected Classes</h3></Link></li>
 
                                 <li onClick={() => setActive("items")}><Link to="" className={`flex items-center ${active === "items" ? "active" : ""}`}><AiOutlineCodeSandbox /> <h3 className='ml-3'>My Enrolled Classes</h3></Link></li>
 
@@ -57,7 +57,7 @@ const Dashboard = () => {
                         }
                        </ul>
 
-                         <div className="w-full bg-[#FFF] h-[1px] my-5"></div>
+                         <div className="w-full bg-[#141414] h-[1px] my-5"></div>
 
                          <ul>
                            <li><Link to="/" className='flex items-center'><BsFillHouseDoorFill /> <h3 className='ml-3'>Home</h3></Link></li>

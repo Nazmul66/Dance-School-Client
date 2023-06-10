@@ -7,6 +7,7 @@ import ErrorElement from "../ErrorElement/ErrorElement";
 import Dashboard from "../Dashboard/Dashboard";
 import ClassPages from "../Component/Pages/ClassPages";
 import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
+import Select_classes from "../Component/Dashboard_Element/Select_classes/Select_classes";
 
 const router = createBrowserRouter([
     {
@@ -37,7 +38,8 @@ const router = createBrowserRouter([
         element: <PrivateRoutes><Dashboard></Dashboard></PrivateRoutes>,
         children: [
             {
-                path: "/dashboard/"
+                path: "/dashboard/select_class",
+                element: <Select_classes></Select_classes>
             }
         ]
     }

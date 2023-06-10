@@ -4,10 +4,12 @@ import DynamicTitle from "../../DynamicTitle/DynamicTitle";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import useBooked from "../../CustomLoader/useBooked";
 
 const ClassPages = () => {
     DynamicTitle("Classes");
     const { user } = useContext(AuthContext);
+    const [, refetch] = useBooked();
     const navigate = useNavigate();
     const [allData, setAllData] = useState([]);
 
@@ -34,7 +36,8 @@ const ClassPages = () => {
             })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                // console.log(data)
+                 refetch();
                 if(data.insertedId){
                     Swal.fire({
                         position: 'center-center',
