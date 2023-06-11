@@ -3,19 +3,24 @@ import './Dashboard.css'
 import logo from '../../public/images/logo.png'
 import { Link, Outlet } from 'react-router-dom';
 import { GiWallet } from 'react-icons/gi';
-import { FaUserTie, FaUserCheck } from 'react-icons/fa';
-import { BsFillHouseDoorFill, BsFillCalendarWeekFill } from 'react-icons/bs';
-import { MdSchool } from 'react-icons/md';
+import { FaPlus, FaUserCheck } from 'react-icons/fa';
+import { BsFillHouseDoorFill, BsFillCalendarWeekFill, BsFillPersonPlusFill } from 'react-icons/bs';
 import { AiOutlineCodeSandbox, AiOutlineMenu } from 'react-icons/ai';
 import { RxCross1 } from 'react-icons/rx';
+import useAdmin from '../CustomLoader/useAdmin';
+import useInstructor from '../CustomLoader/useInstructor';
+import useStudent from '../CustomLoader/useStudent';
 
 const Dashboard = () => {
-    // const location = useLocation(); 
-    // console.log(location)
+
     const [toggle, setToggle] = useState(false);
     const [active, setActive] = useState("selectClass");
-
-    const isAdmin = false;
+    // TODO list
+    const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructor();
+    const [isStudent] = useStudent();
+    console.log(isStudent)
+    // console.log(isAdmin)
 
     return (
         <>
@@ -41,31 +46,35 @@ const Dashboard = () => {
                    </div>
                    <div className='dashboard_menu'>
                        <ul>
-                        {
-                            isAdmin ? <>
+                        { isAdmin?.admin &&  
+                            <>
+                            <li onClick={() => setActive("ManageClasses")}><Link to="" className={`flex items-center ${active === "ManageClasses" ? "active" : ""}`}><BsFillHouseDoorFill /> <h3 className='ml-3'>Manage Classes</h3></Link></li>
+
+                            <li onClick={() => setActive("ManageUsers")}><Link to="/dashboard/Manage_users" className={`flex items-center ${active === "ManageUsers" ? "active" : ""}`}><BsFillCalendarWeekFill /> <h3 className='ml-3'>Manage Users</h3></Link></li>
+
+                            <li><Link to="/" className='flex items-center'><BsFillHouseDoorFill /> <h3 className='ml-3'>Home</h3></Link></li>
+                            </> 
+                         } 
+
+                            { isInstructor.instructor &&
+                                <>
+                                    <li onClick={() => setActive("addClass")}><Link to="/dashboard/addClass" className={`flex items-center ${active === "addClass" ? "active" : ""}`}><FaPlus /> <h3 className='ml-3'>Add a Class</h3></Link></li>
+
+                                    <li onClick={() => setActive("myClass")}><Link to="/dashboard/myClass" className={`flex items-center ${active === "myClass" ? "active" : ""}`}><BsFillPersonPlusFill /> <h3 className='ml-3'>My Classes</h3></Link></li>
+                                </>   
+                            }
+
+                           { isStudent &&
+                                 <>
                                 <li onClick={() => setActive("selectClass")}><Link to="/dashboard/select_class" className={`flex items-center ${active === "selectClass" ? "active" : ""}`}><FaUserCheck /> <h3 className='ml-3'>My Selected Classes</h3></Link></li>
 
                                 <li onClick={() => setActive("items")}><Link to="" className={`flex items-center ${active === "items" ? "active" : ""}`}><AiOutlineCodeSandbox /> <h3 className='ml-3'>My Enrolled Classes</h3></Link></li>
-
+    
                                 <li onClick={() => setActive("manage")}><Link to="" className={`flex items-center ${active === "manage" ? "active" : ""}`}><GiWallet /> <h3 className='ml-3'>Payment History</h3></Link></li>
-                            </> : 
-                            <>
-                                <li onClick={() => setActive("ManageClasses")}><Link to="" className={`flex items-center ${active === "ManageClasses" ? "active" : ""}`}><BsFillHouseDoorFill /> <h3 className='ml-3'>Manage Classes</h3></Link></li>
-
-                                <li onClick={() => setActive("ManageUsers")}><Link to="/dashboard/Manage_users" className={`flex items-center ${active === "ManageUsers" ? "active" : ""}`}><BsFillCalendarWeekFill /> <h3 className='ml-3'>Manage Users</h3></Link></li>
-                            </>
-                        }
-                       </ul>
-
-                         <div className="w-full bg-[#141414] h-[1px] my-5"></div>
-
-                         <ul>
-                           <li><Link to="/" className='flex items-center'><BsFillHouseDoorFill /> <h3 className='ml-3'>Home</h3></Link></li>
-
-                           <li><Link className='flex items-center'><FaUserTie /> <h3 className='ml-3'>Instructors</h3></Link></li>
-
-                           <li><Link to="/classPage" className='flex items-center'><MdSchool /> <h3 className='ml-3'>Classes</h3></Link></li>
-                    
+    
+                               <li><Link to="/" className='flex items-center'><BsFillHouseDoorFill /> <h3 className='ml-3'>Home</h3></Link></li>
+                               </>
+                            }
                        </ul>
                    </div>
                 </div>

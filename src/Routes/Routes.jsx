@@ -9,6 +9,7 @@ import ClassPages from "../Component/Pages/ClassPages";
 import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
 import Select_classes from "../Component/Dashboard_Element/Select_classes/Select_classes";
 import ManageUsers from "../Component/Dashboard_Element/ManageUsers/ManageUsers";
+import AddClass from "../Component/Dashboard_Element/AddClass/AddClass";
 // import Payment from "../Component/Dashboard_Element/Payment/Payment";
 
 const router = createBrowserRouter([
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
             {
                 path: "/dashboard/Manage_users",
                 element: <ManageUsers></ManageUsers>
+            },
+            {
+                path: "/dashboard/addClass",
+                element: <AddClass></AddClass>
             }
         ]
     }

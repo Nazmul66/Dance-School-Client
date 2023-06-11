@@ -1,10 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import { FaUserAlt, FaUserShield } from "react-icons/fa";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import './ManageUsers.css'
 import Swal from "sweetalert2";
+import { useState } from "react";
 
 const ManageUsers = () => {
-    // const [users, setUsers] = useState([]);
+    const [disable, setDisable] = useState(false);
 
     const { data: users = [], refetch } = useQuery(['user'],
        async () =>{
@@ -28,6 +30,7 @@ const ManageUsers = () => {
                     showConfirmButton: false,
                     timer: 1500
                 })
+                setDisable(true)
             }
         })
     }
@@ -49,6 +52,7 @@ const ManageUsers = () => {
                     showConfirmButton: false,
                     timer: 1500
                 })
+                setDisable(true)
             }
         })
     }
@@ -117,7 +121,7 @@ const ManageUsers = () => {
                              <td className='text-[#141414] p-4 whitespace-nowrap font-semibold'>{items?.email}</td>
                              <td className='p-4 whitespace-nowrap'>
                                 {
-                                    items.role === "admin" ? <span className="bg-[orange] px-3 py-2 rounded-3xl text-[#FFF]">admin</span> : <button onClick={() => changeAdmin(items)} className=' bg-[#D1A054] text-[#FFF] px-4 py-3 rounded-[5px]'><FaUserShield /></button>
+                                    items.role === "admin" ? <span className="bg-[orange] px-3 py-2 rounded-3xl text-[#FFF]">admin</span> : <button onClick={() => changeAdmin(items)} className='btn-admin bg-[#D1A054] text-[#FFF] px-4 py-3 rounded-[5px]' disabled={disable}><FaUserShield /></button>
                                 }
                              </td>
                              <td className='p-4 whitespace-nowrap'>
