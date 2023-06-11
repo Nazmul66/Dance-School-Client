@@ -41,7 +41,7 @@ const LoginPage = () => {
         .then(result =>{
             const users = result.user;
             // console.log(users)
-            const saveData = { name: users.displayName, email: users.email }
+            const saveData = { name: users.displayName, email: users.email, image: users.photoURL }
             fetch("http://localhost:5000/user",{
                     method: "POST",
                     headers: {

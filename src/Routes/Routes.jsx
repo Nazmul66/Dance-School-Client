@@ -10,6 +10,9 @@ import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
 import Select_classes from "../Component/Dashboard_Element/Select_classes/Select_classes";
 import ManageUsers from "../Component/Dashboard_Element/ManageUsers/ManageUsers";
 import AddClass from "../Component/Dashboard_Element/AddClass/AddClass";
+import MyClass from "../Component/Dashboard_Element/MyClass/MyClass";
+import All_instructor from "../Component/Pages/All_instructor";
+import ManageClass from "../Component/Dashboard_Element/ManageClass/ManageClass";
 // import Payment from "../Component/Dashboard_Element/Payment/Payment";
 
 const router = createBrowserRouter([
@@ -25,6 +28,10 @@ const router = createBrowserRouter([
             {
                 path: "/classPage",
                 element: <ClassPages></ClassPages>
+            },
+            {
+                path: "/instructor",
+                element: <All_instructor></All_instructor>
             },
             {
                 path: '/login',
@@ -49,12 +56,20 @@ const router = createBrowserRouter([
                 // element: <Payment></Payment>,
             },
             {
+                path: "/dashboard/Manage_class",
+                element: <ManageClass></ManageClass>
+            },
+            {
                 path: "/dashboard/Manage_users",
                 element: <ManageUsers></ManageUsers>
             },
             {
                 path: "/dashboard/addClass",
                 element: <AddClass></AddClass>
+            },
+            {
+                path: "/dashboard/myClass",
+                element: <MyClass></MyClass>
             }
         ]
     }

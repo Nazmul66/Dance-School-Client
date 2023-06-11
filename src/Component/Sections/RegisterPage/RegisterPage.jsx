@@ -29,7 +29,7 @@ const RegisterPage = () => {
             })
             .then(() =>{
                 // console.log("updated")
-                const SaveData = { name: data.name ,email: data.email }
+                const SaveData = { name: data.name , email: data.email, image: data.photoURL }
                 fetch("http://localhost:5000/user",{
                     method: "POST",
                     headers: {

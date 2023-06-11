@@ -41,9 +41,9 @@ const Select_classes = () => {
     }
 
     return (
-        <div className='py-10 px-5 '>
+        <div className='py-10'>
          <div className='max-w-[850px] mx-auto'>
-             <div className='bg-[#FFF] p-[30px]'>
+             <div className='bg-[#FFF] lg:p-[30px] p-0'>
                  <div className='flex lg:flex-row flex-col justify-between items-center mb-7'>
                     <h3 className='text-2xl font-bold uppercase text-[#151515] lg:mb-0 mb-3'>Total Bookings: {book?.length || 0}</h3>
                      {/* <button className='bg-[royalblue] rounded-lg px-2 py-2 text-[#FFF]'>PAY</button> */}
