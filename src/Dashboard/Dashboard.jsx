@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './Dashboard.css'
 import logo from '../../public/images/logo.png'
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useLocation } from 'react-router-dom';
 import { GiWallet } from 'react-icons/gi';
 import { FaPlus, FaUserCheck } from 'react-icons/fa';
 import { BsFillHouseDoorFill, BsFillCalendarWeekFill, BsFillPersonPlusFill } from 'react-icons/bs';
@@ -11,9 +11,12 @@ import useAdmin from '../CustomLoader/useAdmin';
 import useInstructor from '../CustomLoader/useInstructor';
 
 const Dashboard = () => {
+    const location = useLocation();
+    const split = location.pathname.split("/")[2]
+    console.log(split)
 
     const [toggle, setToggle] = useState(false);
-    const [active, setActive] = useState("selectClass");
+    const [active, setActive] = useState(split);
     const [isAdmin] = useAdmin();
     const [isInstructor] = useInstructor();
 
@@ -42,13 +45,13 @@ const Dashboard = () => {
                    <div className='dashboard_menu'>
                        <ul>
                         { isAdmin?.admin &&  
-                            <>
-                            <li onClick={() => setActive("ManageClasses")}><Link to="/dashboard/Manage_class" className={`flex items-center ${active === "ManageClasses" ? "active" : ""}`}><BsFillHouseDoorFill /> <h3 className='ml-3'>Manage Classes</h3></Link></li>
+                          <>
+                             <li onClick={() => setActive("Manage_class")}><Link to="/dashboard/Manage_class" className={`flex items-center ${active === "Manage_class" ? "active" : ""}`}><BsFillHouseDoorFill /> <h3 className='ml-3'>Manage Classes</h3></Link></li>
 
-                            <li onClick={() => setActive("ManageUsers")}><Link to="/dashboard/Manage_users" className={`flex items-center ${active === "ManageUsers" ? "active" : ""}`}><BsFillCalendarWeekFill /> <h3 className='ml-3'>Manage Users</h3></Link></li>
+                             <li onClick={() => setActive("Manage_users")}><Link to="/dashboard/Manage_users" className={`flex items-center ${active === "Manage_users" ? "active" : ""}`}><BsFillCalendarWeekFill /> <h3 className='ml-3'>Manage Users</h3></Link></li>
 
-                            <li><Link to="/" className='flex items-center'><BsFillHouseDoorFill /> <h3 className='ml-3'>Home</h3></Link></li>
-                            </> 
+                             <li><Link to="/" className='flex items-center'><BsFillHouseDoorFill /> <h3 className='ml-3'>Home</h3></Link></li>
+                          </> 
                          } 
 
                             { isInstructor.instructor &&
@@ -61,7 +64,7 @@ const Dashboard = () => {
 
                            { (!isAdmin.admin && !isInstructor.instructor) &&
                                  <>
-                                <li onClick={() => setActive("selectClass")}><Link to="/dashboard/select_class" className={`flex items-center ${active === "selectClass" ? "active" : ""}`}><FaUserCheck /> <h3 className='ml-3'>My Selected Classes</h3></Link></li>
+                                <li onClick={() => setActive("select_class")}><Link to="/dashboard/select_class" className={`flex items-center ${active === "select_class" ? "active" : ""}`}><FaUserCheck /> <h3 className='ml-3'>My Selected Classes</h3></Link></li>
 
                                 <li onClick={() => setActive("items")}><Link to="" className={`flex items-center ${active === "items" ? "active" : ""}`}><AiOutlineCodeSandbox /> <h3 className='ml-3'>My Enrolled Classes</h3></Link></li>
     

@@ -4,10 +4,9 @@ const Popular_instructor = () => {
     const [instructor, setInstructor] = useState([]);
 
     useEffect(() =>{
-        fetch("Instructor.json")
+        fetch("http://localhost:5000/top_instructor")
         .then(res => res.json())
         .then(data => {
-            // console.log(data)
             setInstructor(data)
         })
     },[])

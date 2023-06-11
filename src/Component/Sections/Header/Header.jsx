@@ -8,12 +8,16 @@ import { BsFillMoonFill} from 'react-icons/bs';
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../AuthProvider/AuthProvider';
 import useBooked from '../../../CustomLoader/useBooked';
+import useAdmin from '../../../CustomLoader/useAdmin';
+import useInstructor from '../../../CustomLoader/useInstructor';
 
 const Header = () => {
     const {user, signOutUser} = useContext(AuthContext);
     const [toggle, setToggle] = useState(false)
     const [theme, setTheme] = useState('light-theme');
     const [book] = useBooked();
+    const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructor();
 
 
     const handleLogOut = () =>{
@@ -26,6 +30,7 @@ const Header = () => {
         })
     }
 
+    /// dark & white switch
     const setThemeItem = () =>{
         if(theme === 'light-theme'){
             setTheme('dark-theme')
@@ -54,13 +59,22 @@ const Header = () => {
                             <li><Link to="/instructor">Instructors</Link></li>
                             <li><Link to='/classPage'>Classes</Link></li>
                             {
-                                user ? 
+                              user ? 
                                 <>
-                                    <li><Link to='/dashboard'>Dashboard </Link></li>
+                                   {
+                                    isAdmin?.admin && <li><Link to='/dashboard/Manage_class'>Dashboard </Link></li>
+                                   }
+                                   {
+                                    isInstructor?.instructor && <li><Link to='/dashboard/addClass'>Dashboard </Link></li>
+                                   }
+                                   {
+                                    (!isAdmin?.admin && !isInstructor?.instructor) && <li><Link to='/dashboard/select_class'>Dashboard </Link></li>
+                                   }
+                                    
                                     <li>
                                         <div className='relative'>
                                            <img src={user?.photoURL} alt="" className='w-[60px] h-[60px] block rounded-[50px]' />
-                                           <h3 className='absolute top-[-14px] right-[-16px] text-white bg-warning w-[40px] h-[40px] flex justify-center items-center rounded-full'>{book?.length || 0}</h3>
+                                             <h3 className='absolute top-[-14px] right-[-16px] text-white bg-warning w-[40px] h-[40px] flex justify-center items-center rounded-full'>{book?.length || 0}</h3>                                     
                                         </div>
                                     </li>
                                     <li><button onClick={ handleLogOut }>LogOut</button></li>
