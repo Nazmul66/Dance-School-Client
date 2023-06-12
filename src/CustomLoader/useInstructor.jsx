@@ -10,7 +10,7 @@ const useInstructor = () => {
     const { data: isInstructor = [] } = useQuery({
         queryKey: ['isInstructor', user?.email],
         queryFn: async () =>{
-            const res = await fetch(`http://localhost:5000/users/instructor/${user?.email}`,{
+            const res = await fetch(`https://dance-school-server.vercel.app/users/instructor/${user?.email}`,{
                 headers: {
                     authorization: `bearer ${token}`
                 }

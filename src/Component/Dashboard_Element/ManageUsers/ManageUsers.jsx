@@ -8,12 +8,12 @@ const ManageUsers = () => {
 
     const { data: users = [], refetch } = useQuery(['user'],
        async () =>{
-          const res = await fetch("http://localhost:5000/user")
+          const res = await fetch("https://dance-school-server.vercel.app/user")
           return res.json();
     })
 
     const changeAdmin = (items) =>{
-        fetch(`http://localhost:5000/users/admin/${items._id}`, {
+        fetch(`https://dance-school-server.vercel.app/users/admin/${items._id}`, {
             method: "PATCH",
         })
         .then(res => res.json())
@@ -34,7 +34,7 @@ const ManageUsers = () => {
 
 
     const changeInstructor = (items) =>{
-        fetch(`http://localhost:5000/users/instructor/${items._id}`, {
+        fetch(`https://dance-school-server.vercel.app/users/instructor/${items._id}`, {
             method: "PATCH",
         })
         .then(res => res.json())
@@ -66,7 +66,7 @@ const ManageUsers = () => {
             confirmButtonText: 'Yes, delete it!'
           }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/users/admin/${items._id}`,{
+                fetch(`https://dance-school-server.vercel.app/users/admin/${items._id}`,{
                     method: "DELETE"
                 })
                 .then(res => res.json())

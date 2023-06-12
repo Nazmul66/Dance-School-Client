@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
 
 const Select_classes = () => {
-    const [ book, refetch ] = useBooked();
+    const [book, refetch] = useBooked();
     // console.log(book)
 
     const handleDelete = (id) =>{
@@ -20,7 +20,7 @@ const Select_classes = () => {
         confirmButtonText: 'Yes, delete it!'
       }).then((result) => {
         if (result.isConfirmed) {
-            fetch(`http://localhost:5000/course/${id}`,{
+            fetch(`https://dance-school-server.vercel.app/course/${id}`,{
                 method: "DELETE"
             })
             .then(res => res.json())
@@ -42,7 +42,7 @@ const Select_classes = () => {
 
     return (
         <div className='py-10'>
-         <div className='max-w-[850px] mx-auto'>
+         <div className='max-w-[950px] mx-auto'>
              <div className='bg-[#FFF] lg:p-[30px] p-0'>
                  <div className='flex lg:flex-row flex-col justify-between items-center mb-7'>
                     <h3 className='text-2xl font-bold uppercase text-[#151515] lg:mb-0 mb-3'>Total Bookings: {book?.length || 0}</h3>
@@ -62,7 +62,7 @@ const Select_classes = () => {
                              <th className='p-4 whitespace-nowrap text-[14px]'>PAYMENT</th>
                          </tr>
                      </thead>
-                     <tbody>
+                     <tbody className='border-[1px]'>
                      {/* row 1 */}
                      {
                          book.map((items, index) =><tr key={index} className='border-b-[1px] border-[#e8e8e8] text-center'>
@@ -74,7 +74,7 @@ const Select_classes = () => {
                              <td className='text-[#737373] p-4 whitespace-nowrap'>${items?.price}</td>
                              <td className='p-4 whitespace-nowrap'><button onClick={()=> handleDelete(items._id) } className="bg-[#B91C1C] text-[#FFF] px-4 py-3 rounded-[5px]"><RiDeleteBin6Line /></button></td>
                              <td className='text-[#737373] p-4 whitespace-nowrap'>
-                                <Link to={`/dashboard/payment/${items._id}`} className='bg-[royalblue] rounded-lg px-2 py-2 text-[#FFF]'>PAY</Link>
+                                <Link to={`/dashboard/payment/${items._id}`} className='bg-[royalblue] rounded-lg px-5 py-2 font-bold text-[#FFF]'>Enroll Now</Link>
                              </td>
                          </tr>)
                      }

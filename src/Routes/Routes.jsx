@@ -13,6 +13,8 @@ import AddClass from "../Component/Dashboard_Element/AddClass/AddClass";
 import MyClass from "../Component/Dashboard_Element/MyClass/MyClass";
 import All_instructor from "../Component/Pages/All_instructor";
 import ManageClass from "../Component/Dashboard_Element/ManageClass/ManageClass";
+import Payment from "../Component/Dashboard_Element/Payment/Payment";
+import Payment_History from "../Component/Dashboard_Element/Payment_History/Payment_History";
 // import Payment from "../Component/Dashboard_Element/Payment/Payment";
 
 const router = createBrowserRouter([
@@ -52,8 +54,12 @@ const router = createBrowserRouter([
                 element: <Select_classes></Select_classes>
             },
             {
+                path: "/dashboard/payment_history",
+                element: <Payment_History></Payment_History>  
+            },
+            {
                 path: "/dashboard/payment/:id",
-                // element: <Payment></Payment>,
+                element: <Payment></Payment>,
             },
             {
                 path: "/dashboard/Manage_class",

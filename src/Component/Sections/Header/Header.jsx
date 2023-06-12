@@ -18,6 +18,7 @@ const Header = () => {
     const [book] = useBooked();
     const [isAdmin] = useAdmin();
     const [isInstructor] = useInstructor();
+    console.log(book);
 
 
     const handleLogOut = () =>{

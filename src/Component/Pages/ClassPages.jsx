@@ -18,7 +18,7 @@ const ClassPages = () => {
     const [allData, setAllData] = useState([]);
 
     useEffect(() =>{
-        fetch("http://localhost:5000/classes")
+        fetch("https://dance-school-server.vercel.app/classes")
         .then(res => res.json())
         .then(data => {
             // console.log("Classes",data)
@@ -28,10 +28,10 @@ const ClassPages = () => {
 
     const handleSelect = (item) =>{
         if(user){
-            const {name, instructor, image, price, seat, email, status } = item;
-            const userInfo = { name, instructor, image, price, seat, email, status}
+            const {name, instructor, image, price, seat, status } = item;
+            const userInfo = { name, instructor, image, price, seat, email: user?.email , status}
             // console.log("data", userInfo)
-            fetch("http://localhost:5000/course",{
+            fetch("https://dance-school-server.vercel.app/course",{
                 method: "POST",
                 headers: {
                     'content-type': 'application/json'

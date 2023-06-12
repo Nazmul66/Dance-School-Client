@@ -13,7 +13,7 @@ import useInstructor from '../CustomLoader/useInstructor';
 const Dashboard = () => {
     const location = useLocation();
     const split = location.pathname.split("/")[2]
-    console.log(split)
+    // console.log(split)
 
     const [toggle, setToggle] = useState(false);
     const [active, setActive] = useState(split);
@@ -68,7 +68,7 @@ const Dashboard = () => {
 
                                 <li onClick={() => setActive("items")}><Link to="" className={`flex items-center ${active === "items" ? "active" : ""}`}><AiOutlineCodeSandbox /> <h3 className='ml-3'>My Enrolled Classes</h3></Link></li>
     
-                                <li onClick={() => setActive("manage")}><Link to="" className={`flex items-center ${active === "manage" ? "active" : ""}`}><GiWallet /> <h3 className='ml-3'>Payment History</h3></Link></li>
+                                <li onClick={() => setActive("payment_history")}><Link to="/dashboard/payment_history" className={`flex items-center ${active === "payment_history" ? "active" : ""}`}><GiWallet /> <h3 className='ml-3'>Payment History</h3></Link></li>
     
                                <li><Link to="/" className='flex items-center'><BsFillHouseDoorFill /> <h3 className='ml-3'>Home</h3></Link></li>
                                </>

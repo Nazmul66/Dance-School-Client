@@ -4,7 +4,7 @@ import axios from "axios";
 const ManageClass = () => {
     const { data: classes = [] } = useQuery(['user'],
     async () =>{
-       const res = await axios.get("http://localhost:5000/classes")
+       const res = await axios.get("https://dance-school-server.vercel.app/classes")
        return res.data;
  })
 
