@@ -1,8 +1,10 @@
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
 import { useState } from "react";
+import DynamicTitle from "../../../DynamicTitle/DynamicTitle";
 
 const MyClass = () => {
+    DynamicTitle("My-Class")
     const { user } = useContext(AuthContext)
     const [myClass, setMyClass] = useState([])
 
@@ -18,9 +20,9 @@ const MyClass = () => {
     return (
         <div className='py-10'>
         <div className='max-w-[950px] mx-auto'>
-            <div className='bg-[#FFF] lg:p-[30px] p-0'>
+            <div className='lg:bg-[#FFF] bg-transparent lg:p-[30px] p-0'>
                 <div className='flex lg:flex-row flex-col justify-between items-center mb-7'>
-                   <h3 className='text-2xl font-bold uppercase text-[#151515] lg:mb-0 mb-3'>Total Bookings: {myClass?.length || 0}</h3>
+                   <h3 className='text-2xl font-bold uppercase text-[#151515] lg:mb-0 mb-3'>My Classes: {myClass?.length || 0}</h3>
                    <h3 className='text-xl font-bold uppercase text-[#151515] lg:mb-0 mb-3'>Total Enroll Student: 0</h3>
                 </div>
 

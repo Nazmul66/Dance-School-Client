@@ -16,7 +16,6 @@ import ManageClass from "../Component/Dashboard_Element/ManageClass/ManageClass"
 import Payment from "../Component/Dashboard_Element/Payment/Payment";
 import Payment_History from "../Component/Dashboard_Element/Payment_History/Payment_History";
 import Enroll_classes from "../Component/Dashboard_Element/Enroll_classes/Enroll_classes";
-// import Payment from "../Component/Dashboard_Element/Payment/Payment";
 
 const router = createBrowserRouter([
     {

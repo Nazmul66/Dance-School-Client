@@ -1,7 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import DynamicTitle from "../../../DynamicTitle/DynamicTitle";
 
 const ManageClass = () => {
+    DynamicTitle("Manage-Class")
     const { data: classes = [] } = useQuery(['user'],
     async () =>{
        const res = await axios.get("https://dance-school-server.vercel.app/classes")
@@ -12,7 +14,7 @@ const ManageClass = () => {
     return (
         <div className='py-10'>
           <div className='max-w-[950px] mx-auto'>
-             <div className='bg-[#FFF] lg:p-[30px] p-0'>                 
+             <div className='bg-transparent lg:p-[30px] p-0'>                 
 
                  <div className="overflow-x-auto w-full">
                      <table className=" w-full">

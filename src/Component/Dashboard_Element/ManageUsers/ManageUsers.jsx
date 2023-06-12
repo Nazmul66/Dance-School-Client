@@ -3,9 +3,10 @@ import { FaUserAlt, FaUserShield } from "react-icons/fa";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import './ManageUsers.css'
 import Swal from "sweetalert2";
+import DynamicTitle from "../../../DynamicTitle/DynamicTitle";
 
 const ManageUsers = () => {
-
+    DynamicTitle("Manage-User")
     const { data: users = [], refetch } = useQuery(['user'],
        async () =>{
           const res = await fetch("https://dance-school-server.vercel.app/user")
@@ -90,7 +91,7 @@ const ManageUsers = () => {
     return (
         <div className='py-10'>
           <div className='max-w-[950px] mx-auto'>
-             <div className='bg-[#FFF] lg:p-[30px] p-0'>
+             <div className='bg-transparent lg:p-[30px] p-0'>
                     <h3 className='text-2xl text-center font-bold uppercase text-[#151515] lg:mb-5 mb-3'>Total User: {users?.length}</h3>                  
 
                  <div className="overflow-x-auto w-full">

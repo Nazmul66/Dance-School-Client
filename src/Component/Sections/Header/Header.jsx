@@ -18,7 +18,7 @@ const Header = () => {
     const [book] = useBooked();
     const [isAdmin] = useAdmin();
     const [isInstructor] = useInstructor();
-    console.log(book);
+    // console.log(book);
 
 
     const handleLogOut = () =>{
@@ -74,11 +74,11 @@ const Header = () => {
                                     
                                     <li>
                                         <div className='relative'>
-                                           <img src={user?.photoURL} alt="" className='w-[60px] h-[60px] block rounded-[50px]' />
-                                             <h3 className='absolute top-[-14px] right-[-16px] text-white bg-warning w-[40px] h-[40px] flex justify-center items-center rounded-full'>{book?.length || 0}</h3>                                     
+                                            <img src={user?.photoURL} alt="" className='w-[60px] h-[60px] block mx-auto rounded-[50px]' />
+                                             <h3 className='absolute top-[-14px] lg:right-[-16px] right-0 text-white bg-warning w-[40px] h-[40px] flex justify-center items-center rounded-full'>{book?.length || 0}</h3>                                     
                                         </div>
                                     </li>
-                                    <li><button onClick={ handleLogOut }>LogOut</button></li>
+                                    <li><Link onClick={ handleLogOut }>LogOut</Link></li>
                                 </> :
                                 <>
                                     <li><Link to="/login">Login </Link></li>

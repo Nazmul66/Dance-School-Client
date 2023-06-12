@@ -3,10 +3,12 @@ import { loadStripe } from "@stripe/stripe-js";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import CheckForm from "./CheckForm";
+import DynamicTitle from "../../../DynamicTitle/DynamicTitle";
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHER_KEY)
 
 const Payment = () => {
+  DynamicTitle("Payment")
     const [money, setMoney] = useState([]);
       const {id} = useParams();
     //   console.log(id)

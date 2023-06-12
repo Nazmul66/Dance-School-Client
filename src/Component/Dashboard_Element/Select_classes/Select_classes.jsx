@@ -3,8 +3,10 @@ import { RiDeleteBin6Line } from 'react-icons/ri';
 import useBooked from '../../../CustomLoader/useBooked';
 import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
+import DynamicTitle from '../../../DynamicTitle/DynamicTitle';
 
 const Select_classes = () => {
+    DynamicTitle("Select-Classes")
     const [book, refetch] = useBooked();
     // console.log(book)
 
@@ -20,7 +22,7 @@ const Select_classes = () => {
         confirmButtonText: 'Yes, delete it!'
       }).then((result) => {
         if (result.isConfirmed) {
-            fetch(`https://dance-school-server.vercel.app/course/${id}`,{
+            fetch(`http://localhost:5000/course/${id}`,{
                 method: "DELETE"
             })
             .then(res => res.json())
@@ -43,9 +45,9 @@ const Select_classes = () => {
     return (
         <div className='py-10'>
          <div className='max-w-[950px] mx-auto'>
-             <div className='bg-[#FFF] lg:p-[30px] p-0'>
+             <div className='lg:bg-[#FFF] bg-transparent lg:p-[30px] p-0'>
                  <div className='flex lg:flex-row flex-col justify-between items-center mb-7'>
-                    <h3 className='text-2xl font-bold uppercase text-[#151515] lg:mb-0 mb-3'>Total Bookings: {book?.length || 0}</h3>
+                    <h3 className='text-2xl font-bold uppercase text-[#151515] lg:mb-0 mb-3'>Select Classes: {book?.length || 0}</h3>
                      {/* <button className='bg-[royalblue] rounded-lg px-2 py-2 text-[#FFF]'>PAY</button> */}
                  </div>
 

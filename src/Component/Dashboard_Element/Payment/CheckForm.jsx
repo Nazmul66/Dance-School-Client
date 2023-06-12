@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import './CheckForm.css'
 
 
 const CheckForm = ({ money, price }) => {
@@ -106,6 +107,7 @@ const CheckForm = ({ money, price }) => {
               .then(data => {
                 console.log(data)
                 if(data.insertedId){
+                  navigate("/dashboard/select_class")
                     Swal.fire({
                         position: 'center-center',
                         icon: 'success',
@@ -113,7 +115,6 @@ const CheckForm = ({ money, price }) => {
                         showConfirmButton: false,
                         timer: 1500
                     })
-                    navigate("/dashboard/select_class")
                 }
               })
           }
@@ -122,7 +123,7 @@ const CheckForm = ({ money, price }) => {
 
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="lg:w-[60%] w-full mx-auto" onSubmit={handleSubmit}>
             <CardElement
                 options={{
                 style: {
@@ -140,7 +141,7 @@ const CheckForm = ({ money, price }) => {
                 }}
             />
             <div className="text-center">
-                <button type="submit" className="btn btn-secondary px-10 mt-10" disabled={!stripe || !clientSecret || process}>
+                <button type="submit" className="btn-dash px-10 mt-10" disabled={!stripe || !clientSecret || process}>
                      Pay
                 </button>
                 {

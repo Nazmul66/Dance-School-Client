@@ -13,17 +13,28 @@
     --res-menu: #eacda3;
     --footer-bg: #0a0a0a;
     --footer-color: #fed620;
+    --divider: #fed620;
+    --card-bg: #FFF;
+    --heading_tag: #77ce53;
+    --border: 1px solid #d7d7d7;
+    --para: #141414;
 }
 .dark-theme{
+    --para: #FFF;
+    --card-bg: linear-gradient(90deg, rgba(217,195,195,1) 0%, rgba(200,117,141,1) 100%);
+    --heading_tag: #FFF;
+    --divider: #FFF;
     --nevMenu: #FFF;
     --icon-theme: #FFF;
     --white: #FFF;
     --bg-white: #000;
-    --footer-color: red;
+    --footer-bg: #000;
+    --footer-color: #fed620;
+    --border: none;
 }
 
 body{
-    background-color: var(--bg-white);
+    background-color: #FFF;
     font-family: 'Jost', sans-serif;
     margin: 0;
     padding: 0;

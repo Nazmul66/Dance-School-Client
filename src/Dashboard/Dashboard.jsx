@@ -38,7 +38,7 @@ const Dashboard = () => {
 
         <div className='dashboard px-5'>
             <div className="flex justify-center ">
-                <div className={`lg:w-[20%] w-[70%] h-[100vh] bg-[#F5F7FC] px-6 py-11 ${toggle ? "sidebar active" : "sidebar"}`}>
+                <div className={`lg:w-[20%] w-[70%] h-[100vh] bg-[#d7d7d7] px-6 py-11 ${toggle ? "sidebar active" : "sidebar"}`}>
                    <div className='lg:mb-9 mb-8'>
                        <img src={logo} alt="" className='w-[90px] rounded-full mx-auto' />
                    </div>
@@ -59,6 +59,8 @@ const Dashboard = () => {
                                     <li onClick={() => setActive("addClass")}><Link to="/dashboard/addClass" className={`flex items-center ${active === "addClass" ? "active" : ""}`}><FaPlus /> <h3 className='ml-3'>Add a Class</h3></Link></li>
 
                                     <li onClick={() => setActive("myClass")}><Link to="/dashboard/myClass" className={`flex items-center ${active === "myClass" ? "active" : ""}`}><BsFillPersonPlusFill /> <h3 className='ml-3'>My Classes</h3></Link></li>
+
+                                    <li><Link to="/" className='flex items-center'><BsFillHouseDoorFill /> <h3 className='ml-3'>Home</h3></Link></li>
                                 </>   
                             }
 

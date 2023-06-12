@@ -1,9 +1,11 @@
 import { useContext } from "react";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
+import DynamicTitle from "../../../DynamicTitle/DynamicTitle";
 
 
 const AddClass = () => {
+    DynamicTitle("Add-Class")
     const {user} = useContext(AuthContext)
 
     const handleClass = (event) =>{
