@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import './Popular_instractor.css'
 import DynamicTitle from "../../../DynamicTitle/DynamicTitle";
+import { Zoom } from "react-awesome-reveal";
 
 const Popular_instructor = () => {
     DynamicTitle("Instructors")
@@ -17,7 +18,9 @@ const Popular_instructor = () => {
     return (
         <div className="py-20 px-5 popular_Instructor">
             <div className="max-w-[1140px] mx-auto">
+                   <Zoom>
                     <h4 className="text-center headings text-[28px] font-extrabold">Popular Instructor Section</h4>
+                    </Zoom>
                     <div className="w-[120px] h-[3px] divider mx-auto my-6"></div>
 
                   <div className="grid lg:grid-cols-3 grid-cols-1 gap-7">

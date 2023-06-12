@@ -8,13 +8,13 @@ import "swiper/css/navigation";
 
 // import required modules
 import { Autoplay, Navigation } from "swiper";
-import { FcAnswers } from 'react-icons/fc';
+import { Zoom } from 'react-awesome-reveal';
 
 const Testimonial_Section = () => {
     const [review, setReview] = useState([]);
 
     useEffect(() =>{
-        fetch('review.json')
+        fetch("https://dance-school-server.vercel.app/review")
         .then(res => res.json())
         .then(data => {
             // console.log(data)
@@ -25,7 +25,9 @@ const Testimonial_Section = () => {
     return (
         <div className='py-12 testimonial'>
             <div className='max-w-[1140px] mx-auto'>
-                <h4 className="text-center headings text-[28px] font-extrabold">Testimonial Section</h4>
+                  <Zoom>
+                  <h4 className="text-center headings text-[28px] font-extrabold">Testimonial Section</h4>
+                  </Zoom>
                <div className="w-[120px] h-[3px] divider mx-auto mt-6 mb-20"></div>
 
         <Swiper 
@@ -54,7 +56,7 @@ const Testimonial_Section = () => {
                 review.map((reviews, index) => <SwiperSlide
                     key={index}>
                         <div className='lg:px-20 px-7'>
-                           <FcAnswers className='mx-auto text-[80px] text-[#151515] mb-12' />
+                           <img src={reviews.image} alt="" className='w-[250px] h-[250px] object-cover rounded-full mx-auto mb-10' />
                            <span className='block text-center font-semibold text-[#CD9003] text-[28px] mb-4'>{reviews.name}</span>
                             <p className='text-[18px] font-medium text-center leading-7 para'>{reviews.review}</p>  
                         </div>

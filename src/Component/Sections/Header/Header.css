@@ -35,7 +35,7 @@ header{
 
 @media (min-width: 320px) and (max-width: 576px){
     .menuBar{
-        width: 100%;
+        width: 70%;
         height: 100%;
         display: flex;
         justify-content: center;
