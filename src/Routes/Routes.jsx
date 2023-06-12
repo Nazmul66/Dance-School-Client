@@ -15,6 +15,7 @@ import All_instructor from "../Component/Pages/All_instructor";
 import ManageClass from "../Component/Dashboard_Element/ManageClass/ManageClass";
 import Payment from "../Component/Dashboard_Element/Payment/Payment";
 import Payment_History from "../Component/Dashboard_Element/Payment_History/Payment_History";
+import Enroll_classes from "../Component/Dashboard_Element/Enroll_classes/Enroll_classes";
 // import Payment from "../Component/Dashboard_Element/Payment/Payment";
 
 const router = createBrowserRouter([
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
             {
                 path: "/dashboard/payment_history",
                 element: <Payment_History></Payment_History>  
+            },
+            {
+                path: "/dashboard/enroll_classes",
+                element: <Enroll_classes></Enroll_classes>
             },
             {
                 path: "/dashboard/payment/:id",

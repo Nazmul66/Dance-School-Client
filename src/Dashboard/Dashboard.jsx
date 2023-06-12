@@ -66,7 +66,7 @@ const Dashboard = () => {
                                  <>
                                 <li onClick={() => setActive("select_class")}><Link to="/dashboard/select_class" className={`flex items-center ${active === "select_class" ? "active" : ""}`}><FaUserCheck /> <h3 className='ml-3'>My Selected Classes</h3></Link></li>
 
-                                <li onClick={() => setActive("items")}><Link to="" className={`flex items-center ${active === "items" ? "active" : ""}`}><AiOutlineCodeSandbox /> <h3 className='ml-3'>My Enrolled Classes</h3></Link></li>
+                                <li onClick={() => setActive("enroll_classes")}><Link to="/dashboard/enroll_classes" className={`flex items-center ${active === "enroll_classes" ? "active" : ""}`}><AiOutlineCodeSandbox /> <h3 className='ml-3'>My Enrolled Classes</h3></Link></li>
     
                                 <li onClick={() => setActive("payment_history")}><Link to="/dashboard/payment_history" className={`flex items-center ${active === "payment_history" ? "active" : ""}`}><GiWallet /> <h3 className='ml-3'>Payment History</h3></Link></li>
     
