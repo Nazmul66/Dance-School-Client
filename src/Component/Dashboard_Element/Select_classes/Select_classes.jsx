@@ -67,7 +67,7 @@ const Select_classes = () => {
                      <tbody className='border-[1px]'>
                      {/* row 1 */}
                      {
-                         book.map((items, index) =><tr key={index} className='border-b-[1px] border-[#e8e8e8] text-center'>
+                         book?.map((items, index) =><tr key={index} className='border-b-[1px] border-[#e8e8e8] text-center'>
                              <td className='p-4 whitespace-nowrap'>{index + 1}</td>
                              <td className='p-4 whitespace-nowrap'>
                                <img src={items?.image} alt="" className='w-[50px] h-[50px] mx-auto' />

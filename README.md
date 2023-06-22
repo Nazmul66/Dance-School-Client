@@ -52,4 +52,4 @@ __this website are using many different NPM package that the website was created
 + Documentation Link ---> [react-dotenv](https://www.npmjs.com/package/dotenv)
 
 ## Live Link --->
-+ Hosted by Firebase --> [Dance-School](https://dance-school-9a3be.web.app/)
++ Hosted by Firebase --> [Dance-School](https://dance-school-9a3be.web.app)
